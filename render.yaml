@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: belux-ia-backend
+    env: python
+    region: ohio
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server_com_lean:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: MONGO_URL
+        sync: false
+      - key: DB_NAME
+        value: belux_ia_db
+      - key: EMERGENT_LLM_KEY
+        sync: false
