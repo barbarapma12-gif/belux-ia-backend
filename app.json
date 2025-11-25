@@ -1,0 +1,89 @@
+{
+  "expo": {
+    "name": "BELUX IA",
+    "slug": "belux-ia",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "beluxia",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "description": "Análise Facial Inteligente com IA - Cuide da sua pele de forma profissional",
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.belux.skincare",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "NSCameraUsageDescription": "O BELUX IA precisa acessar sua câmera para fazer a análise facial da sua pele.",
+        "NSPhotoLibraryUsageDescription": "O BELUX IA precisa acessar suas fotos para você escolher imagens para análise."
+      }
+    },
+    "android": {
+      "package": "com.belux.skincare",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      },
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./public/favicon.ico",
+      "themeColor": "#D4A574",
+      "meta": {
+        "apple-mobile-web-app-capable": "yes",
+        "apple-mobile-web-app-status-bar-style": "black-translucent",
+        "apple-mobile-web-app-title": "BELUX IA"
+      },
+      "config": {
+        "firebase": {
+          "apiKey": "",
+          "authDomain": "",
+          "projectId": "",
+          "storageBucket": "",
+          "messagingSenderId": "",
+          "appId": ""
+        }
+      }
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "O BELUX IA precisa acessar suas fotos para análise de pele.",
+          "cameraPermission": "O BELUX IA precisa acessar sua câmera para tirar fotos do seu rosto."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#000000"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "belux-ia-skincare"
+      }
+    }
+  }
+}

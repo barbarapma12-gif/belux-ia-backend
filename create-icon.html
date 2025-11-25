@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BELUX IA Icon Generator</title>
+</head>
+<body>
+    <h2>BELUX IA - Gerando Ícones PWA</h2>
+    <canvas id="canvas192" width="192" height="192"></canvas>
+    <canvas id="canvas512" width="512" height="512"></canvas>
+    
+    <script>
+        function createIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Background gradient (dourado para preto)
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#D4A574'); // Dourado BELUX
+            gradient.addColorStop(1, '#1a1a1a'); // Preto suave
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Borda dourada
+            ctx.strokeStyle = '#D4A574';
+            ctx.lineWidth = size * 0.05;
+            ctx.strokeRect(ctx.lineWidth/2, ctx.lineWidth/2, 
+                          size - ctx.lineWidth, size - ctx.lineWidth);
+            
+            // Texto "BI" (BELUX IA)
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = `bold ${size * 0.4}px Arial, sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('BI', size/2, size/2);
+            
+            // Subtítulo
+            ctx.font = `${size * 0.08}px Arial, sans-serif`;
+            ctx.fillText('SKINCARE', size/2, size * 0.75);
+        }
+        
+        createIcon('canvas192', 192);
+        createIcon('canvas512', 512);
+        
+        // Download automático
+        setTimeout(() => {
+            ['canvas192', 'canvas512'].forEach(id => {
+                const canvas = document.getElementById(id);
+                const link = document.createElement('a');
+                const size = id.includes('192') ? '192' : '512';
+                link.download = `icon-${size}.png`;
+                link.href = canvas.toDataURL();
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        }, 1000);
+    </script>
+</body>
+</html>
